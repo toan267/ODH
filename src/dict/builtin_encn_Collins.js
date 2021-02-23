@@ -62,7 +62,7 @@ class builtin_encn_Collins {
         let extrainfo = result.star;
         let defs = result.defs;
 
-        extrainfo = extrainfo ? `<span class="star">${extrainfo} - kt</span>` : '';
+        extrainfo = extrainfo ? `<span class="star">${extrainfo}</span>` : '';
         let audios = [];
         audios[0] = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(expression)}&type=1`;
         audios[1] = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(expression)}&type=2`;
@@ -76,7 +76,7 @@ class builtin_encn_Collins {
             pos = pos ? `<span class="pos">${pos}</span>` : '';
             chn_tran = chn_tran ? `<span class="chn_tran">${chn_tran}</span>` : '';
             eng_tran = eng_tran ? `<span class="eng_tran">${eng_tran.replace(RegExp(expression, 'gi'),`<b>${expression}</b>`)}</span>` : '';
-            definition = `${pos}<span class="tran">${eng_tran} -Xoa- ${chn_tran}</span>`;
+            definition = `${pos}<span class="tran">${eng_tran}</span>`;
 
             // make exmaple sentence segement
             if (def.ext && def.ext.length > 0 && maxexample > 0) {
@@ -85,7 +85,7 @@ class builtin_encn_Collins {
                     if (idx > maxexample - 1) break; // to control only n example sentences defined in option.
                     let chn_sent = ex.ext_cn;
                     let eng_sent = ex.ext_en.replace(RegExp(expression, 'gi'),`<b>${expression}</b>`);
-                    definition += `<li class='sent'><span class='eng_sent'>${eng_sent}</span><span class='chn_sent'>chk-send -> ${chn_sent}</span></li>`;
+                    definition += `<li class='sent'><span class='eng_sent'>${eng_sent}</span></li>`;
                 }
                 definition += '</ul>';
             }
