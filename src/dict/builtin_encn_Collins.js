@@ -77,6 +77,7 @@ class builtin_encn_Collins {
             chn_tran = chn_tran ? `<span class="chn_tran">${chn_tran}</span>` : '';
             eng_tran = eng_tran ? `<span class="eng_tran">${eng_tran.replace(RegExp(expression, 'gi'),`<b>${expression}</b>`)}</span>` : '';
             definition = `${pos}<span class="tran">${eng_tran}${chn_tran}</span>`;
+            console.log(chn_tran);
 
             // make exmaple sentence segement
             if (def.ext && def.ext.length > 0 && maxexample > 0) {
