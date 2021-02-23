@@ -10,7 +10,7 @@ class builtin_encn_Collins {
         let locale = await api.locale();
         if (locale.indexOf('CN') != -1) return '柯林斯英汉双解(内置)';
         if (locale.indexOf('TW') != -1) return '柯林斯英漢雙解(內置)';
-        return 'Collins EN->EN Dictionary';
+        return 'Collins EN->CN Dictionary((builtin))';
     }
 
 
@@ -76,7 +76,7 @@ class builtin_encn_Collins {
             pos = pos ? `<span class="pos">${pos}</span>` : '';
             chn_tran = chn_tran ? `<span class="chn_tran">${chn_tran}</span>` : '';
             eng_tran = eng_tran ? `<span class="eng_tran">${eng_tran.replace(RegExp(expression, 'gi'),`<b>${expression}</b>`)}</span>` : '';
-            definition = `${pos}<span class="tran">${eng_tran}</span>`;
+            definition = `${pos}<span class="tran">${eng_tran}${chn_tran}</span>`;
 
             // make exmaple sentence segement
             if (def.ext && def.ext.length > 0 && maxexample > 0) {
@@ -85,7 +85,7 @@ class builtin_encn_Collins {
                     if (idx > maxexample - 1) break; // to control only n example sentences defined in option.
                     let chn_sent = ex.ext_cn;
                     let eng_sent = ex.ext_en.replace(RegExp(expression, 'gi'),`<b>${expression}</b>`);
-                    definition += `<li class='sent'><span class='eng_sent'>${eng_sent}</span></li>`;
+                    definition += `<li class='sent'><span class='eng_sent'>${eng_sent}</span><span class='chn_sent'>${chn_sent}</span></li>`;
                 }
                 definition += '</ul>';
             }
